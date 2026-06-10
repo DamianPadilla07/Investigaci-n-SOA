@@ -6,7 +6,6 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     defaults:
@@ -22,6 +21,9 @@ jobs:
       with:
         distribution: temurin
         java-version: '17'
+
+    - name: Dar permisos a Maven Wrapper
+      run: chmod +x mvnw
 
     - name: Build & Test
       run: ./mvnw clean verify
