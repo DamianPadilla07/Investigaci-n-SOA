@@ -1,0 +1,25 @@
+name: CI Spring Boot
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout código
+        uses: actions/checkout@v4
+
+      - name: Configurar Java 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: Build y Tests
+        run: ./mvnw clean verify
+
+      - name: Build Docker Image
+        run: docker build -t myapp:latest .
