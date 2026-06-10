@@ -22,11 +22,8 @@ jobs:
         distribution: temurin
         java-version: '17'
 
-    - name: Dar permisos a Maven Wrapper
-      run: chmod +x mvnw
-
     - name: Build & Test
-      run: ./mvnw clean verify
+      run: mvn clean verify
 
     - name: Package Application
-      run: ./mvnw package
+      run: mvn package
